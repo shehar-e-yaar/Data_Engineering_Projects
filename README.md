@@ -40,23 +40,23 @@ More ETL pipelines will be added as I progress.
 
 ## 📂 Repository Structure
 
-data-engineering-projects/
-│
+data_engineering_Projects/
 ├── etl_city_pipeline/
-│ ├── extract_city.py
-│ ├── transform_city.py
-│ ├── load_city.py
-│ └── city_raw.csv
+│   ├── extract_city.py
+│   ├── transform_city.py
+│   ├── load_city.py
+│   └── city_raw.csv
 │
 ├── etl_student_pipeline/
-│ ├── extract_students.py
-│ ├── transform_students.py
-│ ├── load_students.py
-│ ├── students_raw.csv
-│ ├── scores_raw.csv
-│ └── student_report.csv
+│   ├── extract_students.py
+│   ├── transform_students.py
+│   ├── load_students.py
+│   ├── students_raw.csv
+│   ├── scores_raw.csv
+│   └── student_report.csv
 │
 └── README.md
+
 
 ---
 
