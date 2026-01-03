@@ -2,7 +2,7 @@
 A growing collection of real-world Data Engineering projects created by **Sheharyar Hamd**.
 
 
-This repository documents my complete journey toward becoming a professional **Data Engineer**, using tools like **Python**, **Pandas**, **PostgreSQL**, **ETL pipelines**, and soon **Airflow, AWS, and Spark**.
+This repository documents my complete journey toward becoming a professional **Data Engineer**, using tools like **Python**, **Pandas**, **PostgreSQL**, **ETL pipelines**, and soon **Airflow, AWS or Azure Cloud, Azure BLOB or Spark**.
 
 ---
 
@@ -65,7 +65,7 @@ data_engineering_Projects/
 - **Month 1:** Python for DE (Pandas, file handling, automation)  
 - **Month 2:** SQL + PostgreSQL (joins, aggregates, schema design)  
 - **Month 3:** End-to-end ETL pipelines (CSV → Transform → Load → Report)  
-- **Month 4:** Cloud fundamentals (AWS S3), Spark basics  
+- **Month 4:** Cloud fundamentals Azure or AWS S3, Spark basics  
 - **Month 5:** Data warehousing, Star schema, dbt  
 - **Month 6:** Advanced DE projects + interview prep  
 
@@ -86,7 +86,7 @@ Each project inside this repo represents a milestone in this journey.
 ## 📈 Future Additions
 
 - Apache Airflow scheduling  
-- Cloud pipelines (AWS S3 → Redshift)  
+- Cloud pipelines (Azure Blob → Azure Synapse)  
 - Spark transformations  
 - dbt analytics engineering  
 - More end-to-end projects  
