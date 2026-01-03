@@ -109,13 +109,13 @@ with DAG(
     is_weather_api_ready = HttpSensor(
         task_id="is_weather_api_ready",
         http_conn_id="weather_api",
-        endpoint="data/2.5/weather?q=Lahore&appid=36368a8212b79a8aa7652a9d9890a204",
+        endpoint="data/2.5/weather?q=Lahore&appid=yourapikey",
     )
 
     extract_weather_data = HttpOperator(
         task_id="extract_weather_data",
         http_conn_id="weather_api",
-        endpoint="data/2.5/weather?q=Lahore&appid=36368a8212b79a8aa7652a9d9890a204",
+        endpoint="data/2.5/weather?q=Lahore&appid=yourapikey",
         method="GET",
         response_filter=lambda r: json.loads(r.text),
         log_response=True,
