@@ -1,0 +1,7 @@
+pandas
+numpy
+python-dotenv
+sqlalchemy>=2.0
+psycopg[binary]
+pymysql
+openpyxl
