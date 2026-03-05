@@ -1,0 +1,128 @@
+[2026-03-04T14:00:29.100+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: parquet_to_postgres_etl.load_to_postgres_task manual__2026-03-04T14:00:23.977921+00:00 [queued]>
+[2026-03-04T14:00:29.135+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: parquet_to_postgres_etl.load_to_postgres_task manual__2026-03-04T14:00:23.977921+00:00 [queued]>
+[2026-03-04T14:00:29.136+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2026-03-04T14:00:29.188+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): load_to_postgres_task> on 2026-03-04 14:00:23.977921+00:00
+[2026-03-04T14:00:29.216+0000] {standard_task_runner.py:60} INFO - Started process 891 to run task
+[2026-03-04T14:00:29.264+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'parquet_to_postgres_etl', 'load_to_postgres_task', 'manual__2026-03-04T14:00:23.977921+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/ETL.py', '--cfg-path', '/tmp/tmpw6f2xo2m']
+[2026-03-04T14:00:29.314+0000] {standard_task_runner.py:88} INFO - Job 30: Subtask load_to_postgres_task
+[2026-03-04T14:00:30.200+0000] {task_command.py:423} INFO - Running <TaskInstance: parquet_to_postgres_etl.load_to_postgres_task manual__2026-03-04T14:00:23.977921+00:00 [running]> on host 45484a47d757
+[2026-03-04T14:00:31.279+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='parquet_to_postgres_etl' AIRFLOW_CTX_TASK_ID='load_to_postgres_task' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T14:00:23.977921+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T14:00:23.977921+00:00'
+[2026-03-04T14:00:31.283+0000] {logging_mixin.py:188} INFO - Starting batch load to Postgres...
+[2026-03-04T14:01:30.371+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "pg_type_typname_nsp_index"
+DETAIL:  Key (typname, typnamespace)=(yellow_taxi_data, 2200) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL.py", line 64, in load_to_postgres
+    df.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 2878, in to_sql
+    return sql.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 769, in to_sql
+    return pandas_sql.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1910, in to_sql
+    table = self.prep_table(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1814, in prep_table
+    table.create()
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 914, in create
+    self._execute_create()
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 900, in _execute_create
+    self.table.create(bind=self.pd_sql.con)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/sql/schema.py", line 962, in create
+    bind._run_ddl_visitor(ddl.SchemaGenerator, self, checkfirst=checkfirst)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2221, in _run_ddl_visitor
+    visitorcallable(self.dialect, self, **kwargs).traverse_single(element)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/sql/visitors.py", line 524, in traverse_single
+    return meth(obj, **kw)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/sql/ddl.py", line 899, in visit_table
+    self.connection.execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/sql/ddl.py", line 80, in _execute_on_connection
+    return connection._execute_ddl(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1477, in _execute_ddl
+    ret = self._execute_context(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "pg_type_typname_nsp_index"
+DETAIL:  Key (typname, typnamespace)=(yellow_taxi_data, 2200) already exists.
+
+[SQL: 
+CREATE TABLE public.yellow_taxi_data (
+	vendorid INTEGER, 
+	tpep_pickup_datetime TIMESTAMP WITHOUT TIME ZONE, 
+	tpep_dropoff_datetime TIMESTAMP WITHOUT TIME ZONE, 
+	passenger_count BIGINT, 
+	trip_distance FLOAT(53), 
+	ratecodeid BIGINT, 
+	store_and_fwd_flag TEXT, 
+	pulocationid INTEGER, 
+	dolocationid INTEGER, 
+	payment_type BIGINT, 
+	fare_amount FLOAT(53), 
+	extra FLOAT(53), 
+	mta_tax FLOAT(53), 
+	tip_amount FLOAT(53), 
+	tolls_amount FLOAT(53), 
+	improvement_surcharge FLOAT(53), 
+	total_amount FLOAT(53), 
+	congestion_surcharge FLOAT(53), 
+	airport_fee FLOAT(53), 
+	cbd_congestion_fee FLOAT(53)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2026-03-04T14:01:30.506+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=parquet_to_postgres_etl, task_id=load_to_postgres_task, execution_date=20260304T140023, start_date=20260304T140029, end_date=20260304T140130
+[2026-03-04T14:01:30.571+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 30 for task load_to_postgres_task ((psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "pg_type_typname_nsp_index"
+DETAIL:  Key (typname, typnamespace)=(yellow_taxi_data, 2200) already exists.
+
+[SQL: 
+CREATE TABLE public.yellow_taxi_data (
+	vendorid INTEGER, 
+	tpep_pickup_datetime TIMESTAMP WITHOUT TIME ZONE, 
+	tpep_dropoff_datetime TIMESTAMP WITHOUT TIME ZONE, 
+	passenger_count BIGINT, 
+	trip_distance FLOAT(53), 
+	ratecodeid BIGINT, 
+	store_and_fwd_flag TEXT, 
+	pulocationid INTEGER, 
+	dolocationid INTEGER, 
+	payment_type BIGINT, 
+	fare_amount FLOAT(53), 
+	extra FLOAT(53), 
+	mta_tax FLOAT(53), 
+	tip_amount FLOAT(53), 
+	tolls_amount FLOAT(53), 
+	improvement_surcharge FLOAT(53), 
+	total_amount FLOAT(53), 
+	congestion_surcharge FLOAT(53), 
+	airport_fee FLOAT(53), 
+	cbd_congestion_fee FLOAT(53)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/14/gkpj); 891)
+[2026-03-04T14:01:30.697+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-03-04T14:01:30.788+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

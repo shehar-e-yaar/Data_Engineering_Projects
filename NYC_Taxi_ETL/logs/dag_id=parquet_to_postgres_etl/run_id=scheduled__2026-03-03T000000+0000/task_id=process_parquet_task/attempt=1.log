@@ -1,0 +1,39 @@
+[2026-03-04T13:33:50.776+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: parquet_to_postgres_etl.process_parquet_task scheduled__2026-03-03T00:00:00+00:00 [queued]>
+[2026-03-04T13:33:50.811+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: parquet_to_postgres_etl.process_parquet_task scheduled__2026-03-03T00:00:00+00:00 [queued]>
+[2026-03-04T13:33:50.814+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2026-03-04T13:33:50.859+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): process_parquet_task> on 2026-03-03 00:00:00+00:00
+[2026-03-04T13:33:50.871+0000] {standard_task_runner.py:60} INFO - Started process 227 to run task
+[2026-03-04T13:33:50.903+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'parquet_to_postgres_etl', 'process_parquet_task', 'scheduled__2026-03-03T00:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/ETL.py', '--cfg-path', '/tmp/tmpls8x3bcl']
+[2026-03-04T13:33:50.915+0000] {standard_task_runner.py:88} INFO - Job 2: Subtask process_parquet_task
+[2026-03-04T13:33:51.264+0000] {task_command.py:423} INFO - Running <TaskInstance: parquet_to_postgres_etl.process_parquet_task scheduled__2026-03-03T00:00:00+00:00 [running]> on host 45484a47d757
+[2026-03-04T13:33:52.452+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='parquet_to_postgres_etl' AIRFLOW_CTX_TASK_ID='process_parquet_task' AIRFLOW_CTX_EXECUTION_DATE='2026-03-03T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-03T00:00:00+00:00'
+[2026-03-04T13:34:17.361+0000] {python.py:201} INFO - Done. Returned value was:          vendorid tpep_pickup_datetime  ... airport_fee  cbd_congestion_fee
+0               2  2025-02-01 00:12:18  ...        0.00                0.75
+1               2  2025-02-01 00:40:04  ...        0.00                0.75
+2               1  2025-02-01 00:06:09  ...        0.00                0.75
+3               1  2025-02-01 00:15:13  ...        0.00                0.75
+4               2  2025-02-01 00:02:52  ...        0.00                0.75
+...           ...                  ...  ...         ...                 ...
+2770601         2  2025-02-28 23:28:24  ...        0.00                0.75
+2770602         2  2025-02-28 23:58:29  ...        0.00                0.75
+2770603         2  2025-02-28 23:12:34  ...        1.75                0.00
+2770604         2  2025-02-28 23:00:51  ...        0.00                0.75
+2770605         2  2025-02-28 23:31:24  ...        0.00                0.75
+
+[2770606 rows x 20 columns]
+[2026-03-04T13:34:31.018+0000] {local_task_job_runner.py:234} INFO - Task exited with return code -9
+[2026-03-04T13:34:32.044+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T18:28:55.924+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: parquet_to_postgres_etl.process_parquet_task scheduled__2026-03-03T00:00:00+00:00 [queued]>
+[2026-03-04T18:28:55.944+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: parquet_to_postgres_etl.process_parquet_task scheduled__2026-03-03T00:00:00+00:00 [queued]>
+[2026-03-04T18:28:55.945+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2026-03-04T18:28:55.973+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): process_parquet_task> on 2026-03-03 00:00:00+00:00
+[2026-03-04T18:28:55.983+0000] {standard_task_runner.py:60} INFO - Started process 300 to run task
+[2026-03-04T18:28:55.993+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'parquet_to_postgres_etl', 'process_parquet_task', 'scheduled__2026-03-03T00:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/ETL.py', '--cfg-path', '/tmp/tmp9rryj9sm']
+[2026-03-04T18:28:56.001+0000] {standard_task_runner.py:88} INFO - Job 2: Subtask process_parquet_task
+[2026-03-04T18:28:56.131+0000] {task_command.py:423} INFO - Running <TaskInstance: parquet_to_postgres_etl.process_parquet_task scheduled__2026-03-03T00:00:00+00:00 [running]> on host c57b70643ac9
+[2026-03-04T18:28:56.833+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='parquet_to_postgres_etl' AIRFLOW_CTX_TASK_ID='process_parquet_task' AIRFLOW_CTX_EXECUTION_DATE='2026-03-03T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-03-03T00:00:00+00:00'
+[2026-03-04T18:28:56.840+0000] {logging_mixin.py:188} INFO - Parquet file found: /opt/***/data/yellow_tripdata_2025-02.parquet
+[2026-03-04T18:28:56.841+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-03-04T18:28:56.857+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=parquet_to_postgres_etl, task_id=process_parquet_task, execution_date=20260303T000000, start_date=20260304T182855, end_date=20260304T182856
+[2026-03-04T18:28:56.893+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-03-04T18:28:56.930+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

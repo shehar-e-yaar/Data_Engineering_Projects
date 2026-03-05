@@ -1,0 +1,25 @@
+[2026-03-04T13:55:27.871+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: parquet_to_postgres_etl.load_to_postgres_task manual__2026-03-04T13:49:11.330584+00:00 [queued]>
+[2026-03-04T13:55:27.918+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: parquet_to_postgres_etl.load_to_postgres_task manual__2026-03-04T13:49:11.330584+00:00 [queued]>
+[2026-03-04T13:55:27.920+0000] {taskinstance.py:2170} INFO - Starting attempt 5 of 6
+[2026-03-04T13:55:27.971+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): load_to_postgres_task> on 2026-03-04 13:49:11.330584+00:00
+[2026-03-04T13:55:28.014+0000] {standard_task_runner.py:60} INFO - Started process 765 to run task
+[2026-03-04T13:55:28.077+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'parquet_to_postgres_etl', 'load_to_postgres_task', 'manual__2026-03-04T13:49:11.330584+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/ETL.py', '--cfg-path', '/tmp/tmpy_3gvocp']
+[2026-03-04T13:55:28.114+0000] {standard_task_runner.py:88} INFO - Job 18: Subtask load_to_postgres_task
+[2026-03-04T13:55:28.985+0000] {task_command.py:423} INFO - Running <TaskInstance: parquet_to_postgres_etl.load_to_postgres_task manual__2026-03-04T13:49:11.330584+00:00 [running]> on host 45484a47d757
+[2026-03-04T13:55:42.131+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='parquet_to_postgres_etl' AIRFLOW_CTX_TASK_ID='load_to_postgres_task' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T13:49:11.330584+00:00' AIRFLOW_CTX_TRY_NUMBER='5' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T13:49:11.330584+00:00'
+[2026-03-04T13:55:42.175+0000] {logging_mixin.py:188} INFO - Rows received for load
+[2026-03-04T13:55:42.182+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/ETL.py", line 40, in load_to_postgres
+    df.to_sql(
+AttributeError: 'str' object has no attribute 'to_sql'
+[2026-03-04T13:55:42.227+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=parquet_to_postgres_etl, task_id=load_to_postgres_task, execution_date=20260304T134911, start_date=20260304T135527, end_date=20260304T135542
+[2026-03-04T13:55:42.252+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 18 for task load_to_postgres_task ('str' object has no attribute 'to_sql'; 765)
+[2026-03-04T13:55:42.311+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-03-04T13:55:42.372+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
