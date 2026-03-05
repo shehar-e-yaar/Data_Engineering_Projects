@@ -6,7 +6,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from sqlalchemy import create_engine
 
-# ✅ only new import (needed for batch reading)
+# needed for batch reading
 import pyarrow.dataset as ds
 
 #Connecting database using SQLAlchemy and loading environment variables using python-dotenv
