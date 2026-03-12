@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    database: ECOMMERCE_DW
+    schema: RAW
+    tables:
+      - name: raw_users
+      - name: raw_products
+      - name: raw_orders
+      - name: raw_order_items
