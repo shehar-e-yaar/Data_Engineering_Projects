@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:15
+    container_name: crypto_analysis
+    environment:
+      POSTGRES_USER: crypto_user
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data_v2:/var/lib/postgresql/data
+  web:
+    build: ./backend
+    container_name: crypto_django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+volumes:  
+  postgres_data_v2:
